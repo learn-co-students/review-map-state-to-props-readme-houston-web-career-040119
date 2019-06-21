@@ -6,9 +6,10 @@ import './App.css';
 class App extends Component {
 
   handleOnClickItems() {
-    this.props.store.dispatch({
-      type: 'GET_COUNT_OF_ITEMS',
-    });
+    // this.props.store.dispatch({
+    //   type: 'GET_COUNT_OF_ITEMS',
+    // });
+    this.props.increaseItems()
   }
 
   handleOnClickUsers() {
@@ -19,6 +20,7 @@ class App extends Component {
 
   render() {
     // debugger;
+    console.log(this.props.items.length)
     return (
       <div className="App">
           <button onClick={() => this.handleOnClickItems()}>
@@ -34,8 +36,14 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-  debugger;
+  // debugger;
   return { items: state.items }
 }
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = (dispatch) => {
+  return {increaseUsers: () => dispatch({type: 'GET_COUNT_OF_USERS'}),
+          increaseItems: () => dispatch({type: 'GET_COUNT_OF_ITEMS'})
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
