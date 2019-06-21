@@ -28,14 +28,21 @@ class App extends Component {
             Click to change user count
           </button>
           <p>{this.props.items.length}</p>
+          {/* <p>{this.props.users.length}</p> */}
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  debugger;
-  return { items: state.items }
-}
+// const mapStateToProps = (state) => {
+//   debugger;
+//   return { items: state.items, users: state.users }
+// }
 
-export default connect(mapStateToProps)(App);
+// export default connect(mapStateToProps)(App);
+const vanilla = (milkshake) => {
+  debugger;
+  return { items: milkshake.items }
+}
+ 
+export default connect(vanilla)(App);
